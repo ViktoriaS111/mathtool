@@ -101,7 +101,7 @@ def sko(n):
 
 def stand_dev(n):
     if len(n) < 2:
-        return 'значения нет'
+        return None
     return math.sqrt(summ_sqrt_dev(n) / (len(n) - 1))
 
 def stats(args):
