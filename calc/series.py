@@ -4,6 +4,8 @@ MAX_TERMS = 10000
 MAX_EPS = 0.0001
 MAX_ITERATIONS = 100000
 
+DIGITS = math.ceil(-math.log10(MAX_EPS))
+
 def sign(n):
     if n % 2 == 0:
         return -1
@@ -16,8 +18,10 @@ def addend_sqplus(n):
 def addend_third(n):
     return sign(n) / (3 * n)
 
-formuls = {'sqplus': (addend_sqplus, 'S = 1/(1^2+1) - 1/(2^2+1) + 1/(3^2+1) - ...'),
-           'third': (addend_third, 'S = 1/3 - 1/6 + 1/9 - 1/12 + ...')}
+FORMULAS = {
+    'sqplus': (addend_sqplus, 'S = 1/(1^2+1) - 1/(2^2+1) + 1/(3^2+1) - ...'),
+    'third': (addend_third, 'S = 1/3 - 1/6 + 1/9 - 1/12 + ...')
+    }
 
 def sum_term(add, count):
     res = 0
@@ -45,7 +49,7 @@ def series(args):
         if not(1 <= args.terms <= MAX_TERMS):
             raise ValueError('количество слагаемых вне диапазона')
 
-    term, formula = formuls[args.func]
+    term, formula = FORMULAS[args.func]
     print(formula)
 
     if args.terms is not None:
@@ -55,5 +59,5 @@ def series(args):
         result, n = sum_eps(term, args.eps)
 
     print(f"слагаемых: {n}")
-    print(f"сумма ряда: {result:.4f}")
+    print(f"сумма ряда: {result:.{DIGITS}f}")
     return 0

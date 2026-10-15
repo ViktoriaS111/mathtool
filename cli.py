@@ -1,4 +1,5 @@
 import argparse
+from calc.series import FORMULAS
 
 def set_parser():
     parser = argparse.ArgumentParser(prog="mathtool", description='расчёты над уравнениями и числовыми последовательностями', allow_abbrev=False)
@@ -16,7 +17,7 @@ def set_parser():
 
     #series
     series = commands.add_parser("series", help='сумма ряда', allow_abbrev=False)
-    series.add_argument('--func', type=str, required=True, help='какой ряд суммировать')
+    series.add_argument('--func', choices=sorted(FORMULAS), type=str, required=True, help='какой ряд суммировать')
     group = series.add_mutually_exclusive_group(required=True)
     group.add_argument('--terms', type=int, help='сколько слагаемых')
     group.add_argument('--eps', type=float, help='до какой величины слагаемого считать')
@@ -26,6 +27,6 @@ def set_parser():
     integrate.add_argument('--func', required=True, help='какую функцию интегрировать')
     integrate.add_argument('--from', type=float, required=True, help='нижний предел интегрирования', dest="start")
     integrate.add_argument('--to', type=float, required=True, help='верхний предел интегрирования')
-    integrate.add_argument('--steps', type=str, required=True, help='на сколько прямоугольников делится отрезок')
+    integrate.add_argument('--steps', type=int, required=True, help='на сколько прямоугольников делится отрезок')
 
     return parser

@@ -3,7 +3,7 @@ import cli
 from calc.equation import prepare_solve
 from calc.stats import stats
 from calc.series import series
-from calc.integrate import proverka_intgr
+from calc.integrate import proverka_and_intgrt
 
 def main(argv):
     parser = cli.set_parser()
@@ -16,7 +16,7 @@ def main(argv):
     "solve": prepare_solve,
     "stats": stats,
     "series": series,
-    "integrate": proverka_intgr,
+    "integrate": proverka_and_intgrt,
     }
 
     try:
