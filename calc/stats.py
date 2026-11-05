@@ -13,6 +13,8 @@ def add_to_nmbrs(args):
         while True:
             try:
                 s = input()
+                if s == '':
+                    break
             except EOFError:
                 break
             for x in s.split():

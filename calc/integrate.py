@@ -1,4 +1,5 @@
 import math
+from calc.equation import solve
 
 MAX_STEPS = 100000
 
@@ -8,9 +9,15 @@ def F_ratio(x):
 def F_root(x):
     return math.sqrt(x * x + 1)
 
+def test(x):
+    return -(x ** 2) + 2 * x + 3
+
+kind, d, roots = solve(-1, 2, 3)
+
 table_func = {
     'ratio': (F_ratio, 'F(x) = x / (x + 1)', 0, 20, True),
-    'root': (F_root, 'F(x) = sqrt(x^2 + 1)', -5, 5, False)
+    'root': (F_root, 'F(x) = sqrt(x^2 + 1)', -5, 5, False),
+    'test': (test, '', roots[0], roots[1], True)
     }
 
 def integrate(F, a, b, steps):

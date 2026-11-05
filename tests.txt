@@ -98,7 +98,7 @@
 
 38. python mathtool.py integrate --func root --from 0 --to 4 --steps 1000 => значение интеграла 9.2873; код 0
 
-39. python mathtool.py integrate --func root --from 0 --to 4 --steps -3 => ОШИБКА: количество шагов вне диапазона; код 1 
+39. python mathtool.py integrate --func test --from 0 --to 2 --steps 1000 => ОШИБКА: количество шагов вне диапазона; код 1 
 
 40. python mathtool.py integrate --func root --from 4.5 --to 2 --steps 1000 => ОШИБКА: начальный предел не меньше конечного; код 1 
 

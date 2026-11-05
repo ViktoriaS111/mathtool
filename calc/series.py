@@ -18,9 +18,13 @@ def addend_sqplus(n):
 def addend_third(n):
     return sign(n) / (3 * n)
 
+def test(n):
+    return sign(n) / (n ** 2 - 12)
+
 FORMULAS = {
     'sqplus': (addend_sqplus, 'S = 1/(1^2+1) - 1/(2^2+1) + 1/(3^2+1) - ...'),
-    'third': (addend_third, 'S = 1/3 - 1/6 + 1/9 - 1/12 + ...')
+    'third': (addend_third, 'S = 1/3 - 1/6 + 1/9 - 1/12 + ...'),
+    'test': (test, '')
     }
 
 def sum_term(add, count):
