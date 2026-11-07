@@ -1,5 +1,7 @@
 import argparse
 from calc.series import FORMULAS
+from calc.arrays import MIN_VAL, MAX_VAL
+from calc.sorting import METHODS
 
 def set_parser():
     parser = argparse.ArgumentParser(prog="mathtool", description='расчёты над уравнениями и числовыми последовательностями', allow_abbrev=False)
@@ -28,5 +30,25 @@ def set_parser():
     integrate.add_argument('--from', type=float, required=True, help='нижний предел интегрирования', dest="start")
     integrate.add_argument('--to', type=float, required=True, help='верхний предел интегрирования')
     integrate.add_argument('--steps', type=int, required=True, help='на сколько прямоугольников делится отрезок')
+
+    #fill
+    fill = commands.add_parser("fill", help='генерация списка', allow_abbrev=False)
+    fill.add_argument('-c', '--count', type=int, required=True, help='количество элементов, от 1 до 1_000_000')
+    fill.add_argument('--min', type=int, default=MIN_VAL, help='нижняя граница значений, -100 <= min <= max')
+    fill.add_argument('--max', type=int, default=MAX_VAL, help='верхняя граница значений, min <= max <= 100')
+    fill.add_argument('--seed', type=int, help='начальное значение генератора, целое число')
+    fill.add_argument('-o', '--output', help='файл для созданного массива')
+
+    #sort
+    sort = commands.add_parser("sort", help='сортировка массива', allow_abbrev=False)
+    sort.add_argument('-m', '--method', required=True, help='bubble, selection, insertion или counting', choices=METHODS)
+    sort.add_argument('--order', choices=['asc', 'desc'], default='asc', help='asc — по возрастанию, desc — по убыванию')
+    sort.add_argument('-i', '--input', help='файл с исходным массивом')
+    sort.add_argument('-o', '--output', help='файл для отсортированного массива')
+
+    #search
+    search = commands.add_parser("search", help='двоичный поиск', allow_abbrev=False)
+    search.add_argument('-v', '--value', type=int, required=True, help='искомое целое число, модуль не больше 1000')
+    search.add_argument('-i', '--input', help='файл с массивом по возрастанию')
 
     return parser
