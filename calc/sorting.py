@@ -5,7 +5,7 @@ def out_of_order(a, b, descending):
         return a < b
     else:
         return a > b
-
+                            
 def bubble(massive, descending = False):
     n = len(massive)
     for i in range(0, n - 1):
@@ -21,7 +21,7 @@ def selection(massive, descending = False):
      n = len(massive)
      for i in range(0, n - 1):
         best = i
-        for j in range(j + 1, n):
+        for j in range(i + 1, n):
             if out_of_order(massive[best], massive[j], descending):
                 best = j
         massive[i], massive[best] = massive[best], massive[i]

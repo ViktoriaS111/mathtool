@@ -20,4 +20,22 @@ def check_val(values):
     for v in values:
             if (MIN_VAL <= v <= MAX_VAL) == False:
                 raise ValueError('элемент {n} вне допустимого диапазона')
-    
+
+def is_sorted_asc(values):
+    for i in range(len(values) - 1):
+        if values[i] > values[i + 1]:
+            return False
+    return True
+
+def binary_search(massive, target):
+    left = 0
+    right = len(massive) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if massive[mid] == target:
+            return mid
+        if massive[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return None
