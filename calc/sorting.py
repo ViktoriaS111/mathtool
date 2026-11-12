@@ -41,8 +41,9 @@ def counting(massive, descending = False):
     for i in massive:
         counters[i - MIN_VAL] += 1
     k = 0
-    numbers = range(0, len(counters))
     if descending:
+        numbers = range(0, len(counters))
+    else:
         numbers = range(0, len(counters), -1)
     for n in numbers:
         for _ in range(counters[n]):

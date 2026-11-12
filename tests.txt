@@ -102,4 +102,54 @@
 
 40. python mathtool.py integrate --func root --from 4.5 --to 2 --steps 1000 => ОШИБКА: начальный предел не меньше конечного; код 1 
 
-41.python mathtool.py integrate --func root --from -5 --to 5 --steps 1000 => ОШИБКА: предел вне промежутка; код 1
+41. python mathtool.py integrate --func root --from -5 --to 5 --steps 1000 => ОШИБКА: предел вне промежутка; код 1
+
+42. python mathtool.py fill -c 5 --seed 42 => 63, -72, -94, 89, -30
+
+43. python mathtool.py fill -c 0 => ОШИБКА: элементы вне диапазона
+
+44. python mathtool.py sort -m bubble -i example.txt => Время операции bubble: 0.000019; -76 -5 24 43 81; Массив успешно отсортирован.
+
+45. python mathtool.py sort -m selection -i example.txt -o example_sorted.txt => Время операции selection: 0.000009; Записано элементов: 5 в файл example_sorted.txt; Массив успешно отсортирован
+
+46. python mathtool.py sort -m insertion -i example.txt => Время операции insertion: 0.000009; [-76, -5, 24, 43, 81]; Массив успешно отсортирован
+
+47. python mathtool.py sort -m counting -i example.txt --order desc => Время операции counting: 0.000085; [-76, -5, 24, 43, 81]; Массив успешно отсортирован
+
+48. python mathtool.py search -v 43 -i example_sorted.txt => Значение 43 имеет элемент с индексом 4
+
+49. python mathtool.py search -v 15 -i example_sorted.txt => Значение 15 не найдено
+
+50. python mathtool.py search -v 43 -i example.txt => ОШИБКА: Массив не упорядочен
+
+Для 1000 элементов:
+метод bubble: 0.093876 c., 0.066349 c., 0.065725 c.
+Ср. время: 0.075317 с.
+метод selection: 0.049663 c., 0.043353 c., 0.042467 c.
+Ср. время: 0.045161 с.
+метод insertion: 0.031939 c., 0.034106 c., 0.035174 c.
+Ср. время: 0.033140 с.
+метод counting: 0.000076 c., 0.000075 c., 0.000072 c.
+Ср. время: 0.000074 с.
+
+Для 3000 элементов:
+метод bubble: 0.596185 c., 0.553480 c., 0.575997 c.
+Ср. время: 0.575221 с.
+метод selection: 0.462347 c., 0.505240 c., 0.468235 c.
+Ср. время: 0.478607 с.
+метод insertion: 0.296168 c., 0.291511 c., 0.309758 c.
+Ср. время: 0.299146 с.
+метод counting: 0.000197 c., 0.000240 c, 0.000196 c.
+Ср. время: 0.000211 с.
+
+Для 10000 элементов:
+метод bubble: 5.486467 c., 5.349407 c., 5.529405 c.
+Ср. время: 5.455093 с.
+метод selection: 3.232541 c., 3.415617 c., 3.321876 c.
+Ср. время: 3.323345 с.
+метод insertion: 2.890287 c., 3.073000 c., 2.545496 c.
+Ср. время: 2.836261 с.
+метод counting: 0.000618 c., 0.000628 c, 0.000576 c.
+Ср. время: 0.000607 с.
+
+При увеличении списка увеличивается время. Самым быстрым оказался метод counting.

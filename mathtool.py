@@ -16,6 +16,8 @@ def read_massive(path):
         while True:
             try:
                 line = input()
+                if line == '':
+                    break
             except EOFError:
                 break
             if line.strip() == False:
@@ -44,7 +46,7 @@ def mesure(name, oper, param):
     start = time.perf_counter()
     res = oper(*param)
     time_ = time.perf_counter() - start
-    print(f'Время операции {name}: {time_:.6f}', file=sys.stderr)
+    print(f'Время операции {name}: {time_:.6f} c.', file=sys.stderr)
     return res
 
 def handle_fill(args):
